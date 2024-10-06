@@ -1,0 +1,11 @@
+
+# 6kyu  Python
+# https://www.codewars.com/kata/5fe919c062464e001856d70e/train/python
+
+def windmill(a):
+
+    return a
+
+if __name__ == '__main__':
+    x = [(0, 0), (1, 0)]
+    print(windmill(x))

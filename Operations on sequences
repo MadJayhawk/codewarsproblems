@@ -1,0 +1,36 @@
+
+# 5 kyu  Python
+# https://www.codewars.com/kata/5e4bb05b698ef0001e3344bc/train/python
+
+# DID NOT WORK  worked for most test problems.  Timed out on 3 or 4.
+
+0
+# def solve(arr):
+#     a, b, c, d = arr[0:4]
+#     #print(a, b, c, d)
+#     #print(arr[4:])
+#     first4 = [abs(a*c - b*d), (a*d+b*c)]
+#     if len(arr) == 4:
+#         return first4
+#     return solve(first4 + arr[4:])
+
+'''
+Using the identity 
+(x² + y²)(u² + v²) = (xu + yv)² + (xv - yu)²
+'''
+def solve(arr):
+    # your code
+    print(arr)
+    A = arr[0]
+    B = arr[1]
+    for i in range(2,len(arr),2):
+        A_temp = A*arr[i] + B*arr[i+1]
+        B = abs(A*arr[i+1] - B*arr[i])
+        A = A_temp
+    return [A,B]
+        
+if __name__ == '__main__':
+    x =[2, 1, 3, 4, 2, 2, 1, 5, 2, 3, 4, 5]
+    a=solve(x)
+    print(a[0]**2+a[1]**2)
+    print(a)

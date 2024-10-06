@@ -1,0 +1,37 @@
+
+# 6 kyu  Python
+# https://www.codewars.com/kata/55466989aeecab5aac00003e/python
+
+def sqInRect(z,y):   
+    x=[z,y]  
+    b=min(x)
+    c=max(x)
+    if b==c:return None
+    t=b*c
+    d=[]
+    while t >0:
+        t-=b**2
+        d.append(b)
+        x=[b,c-b]
+        b=min(x)
+        c=max(x)
+    return d
+    
+if __name__ == '__main__':
+    
+    print(sqInRect(5,5))
+'''
+-------------------------------------------------------------------------
+# Recursive solution
+def sqInRect(lng, wdth, recur = 0):
+    if lng == wdth:
+        return (None, [lng])[recur]            # If this is original function call, return None for equal sides (per kata requirement);
+                                               # if this is recursion call, we reached the smallest square, so get out of recursion.
+    lesser = min(lng, wdth)
+    return [lesser] + sqInRect(lesser, abs(lng - wdth), recur = 1)
+    
+# Best Practices21 Clever151
+
+
+-------------------------------------------------------------------------
+'''

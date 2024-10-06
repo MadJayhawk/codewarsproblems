@@ -1,0 +1,14 @@
+
+# 5 kyu  Python
+# https://www.codewars.com/kata/5ffcbacca79621000dbe7238/train/python
+
+
+DID NOT WORK.
+
+def draw_borders(shape):
+
+    return y
+    
+if __name__ == '__main__':
+    x = {(1,1),(2,1),(1,2),(2,2)}
+    print(draw_borders(x))

@@ -1,0 +1,51 @@
+
+# 4 kyu  Python
+# https://www.codewars.com/kata/51b66044bce5799a7f000003/train/python
+# https://stackoverflow.com/questions/28777219/basic-program-to-convert-integer-to-roman-numerals
+
+romVL = [999, 'IM', 995,  'LM', 900, 'CM', 500, 'D', 499, 'ID', 495, 'VD', 490, 'XD', 450, 'LD', 400, 'CD', 100, 'C', 99, 'IC', 95, 'VC', 90, 'XC', 50, 'L', 49, 'IL', 45, 'VL', 40, 'XL', 10, 'X', 9, 'IX', 5, 'V', 4, 'IV', 1, 'I']
+LV = {"M":1000,"D":500,"C":100,"L":50,"X":10,"V":5,"I":1}
+
+class RomanNumerals(): 
+    
+    def __init__(self, value):
+        self.value= value
+ 
+    def to_roman(N,V=1000,L="M",*rest):
+        return N//V*L + RomanNumerals.to_roman(N%V,*rest or romVL) if N else ""
+
+    def from_roman(R):
+        return sum(LV[L]*[1,-1][LV[L]<LV[N]] for L,N in zip(R,R[1:]+"I"))
+    
+if __name__ == '__main__':
+    x = RomanNumerals
+    # x = 1000
+    print(x.to_roman(1990))
+    print(x.from_roman('MCMLXIX'))
+    
+'''
+import string
+from collections import OrderedDict
+
+class RomanNumerals:
+  @classmethod
+  def to_roman(self, num):
+    conversions = OrderedDict([('M',1000), ('CM',900), ('D', 500), ('CD',400), ('C',100), ('XC',90), ('L',50), ('XL',40),
+                               ('X',10), ('IX',9), ('V',5), ('IV',4), ('I',1)])
+    out = ''
+    for key, value in conversions.iteritems():
+      while num >= value:
+        out += key
+        num -= value
+    return out
+  
+  @classmethod
+  def from_roman(self, roman):
+    conversions = OrderedDict([('CM',900), ('CD',400), ('XC',90), ('XL',40), ('IX',9), ('IV',4), ('M',1000), ('D',500),
+                               ('C',100), ('L',50), ('X',10), ('V',5), ('I',1)])
+    out = 0
+    for key, value in conversions.iteritems():
+      out += value * roman.count(key)
+      roman = string.replace(roman, key, "")
+    return out
+'''

@@ -1,0 +1,15 @@
+
+# 6 kyu  Python
+# https://www.codewars.com/kata/5e2aec959bce5c001f090c4d/train/python
+
+def count_of_heads(initial, n, swings):
+    x=1
+    for i in range(1,swings+1):
+        x*=i
+        initial=initial-1+x*n
+    return initial
+    
+if __name__ == '__main__':
+    x = (5, 10, 3)
+    initial,n,swings = x
+    print(count_of_heads(initial, n, swings))
